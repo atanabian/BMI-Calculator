@@ -10,3 +10,11 @@ With this code , you can calc your Body mass index then show the information abo
 | Delete_DataBase | if lastname = None --> Delete all item else : delete orresponding row | self , last_name |
 | quit_script | go out from script | self |
 | run_required_methods | run the calc_bmi , __init__ , Status_bmi , insert_database | self | 
+
+You Should install 'tabulate' package with this command:
+` pip install tabulate `
+
+Used packages : 
+sqlite3 
+os 
+tabulate 
