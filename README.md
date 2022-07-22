@@ -15,6 +15,6 @@ You Should install 'tabulate' package with this command:
 ` pip install tabulate `
 
 Used packages : 
-sqlite3 
-os 
+sqlite3 - 
+os - 
 tabulate 
