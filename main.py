@@ -17,7 +17,7 @@ class BMI_Calc:
         self.height_m = self.height / 100
         self.bmi = self.weight / (self.height_m ** 2)
 
-        return round(self.bmi, 2)
+        return round(self.bmi, 1)
 
     def Status_bmi(self):
         "analysis BMI"
