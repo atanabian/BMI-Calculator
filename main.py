@@ -35,7 +35,7 @@ class BMI_Calc:
             self.database_msg = 'overweight'
         return msg
 
-    def insert_databace(self):
+    def insert_database(self):
 
         self.conn = sqlite3.connect("bmi.db")
         self.cursor = self.conn.cursor()
@@ -60,7 +60,7 @@ class BMI_Calc:
 
         print("Values inserted to data bace!")
 
-    def Show_date_base(self, last_name=None):
+    def Show_data_base(self, last_name=None):
 
         # if last namn has value
         self.conn = sqlite3.connect("bmi.db")
