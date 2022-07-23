@@ -1,6 +1,6 @@
 import sqlite3
 from os import remove , system
-
+from tabulate import tabulate
 
 class BMI_Calc:
 
@@ -70,11 +70,11 @@ class BMI_Calc:
 
             self.cursor.execute(
                 """SELECT * FROM bmi WHERE lname = :lname""", {'lname': last_name})
-            return (self.cursor.fetchall())
+            return tabulate(self.cursor.fetchall())
 
         elif last_name == None:
             self.cursor.execute("""SELECT * FROM bmi""")
-            return (self.cursor.fetchall())
+            return tabulate(self.cursor.fetchall())
 
     def Delete_DataBase(self , last_name = None) :
             "Delete Data Base if last name --> None : Delete all database else : delete the lastname's info from data bace"
