@@ -1,6 +1,5 @@
 import unittest
 from main import BMI_Calc as Bmi
-import sqlite3
 
 
 class TestCalcBmi(unittest.TestCase):
