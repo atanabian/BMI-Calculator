@@ -1,6 +1,6 @@
 import sqlite3
 from os import remove , system
-from tabulate import tabulate
+import tabulate
 
 class BMI_Calc:
 
@@ -30,7 +30,7 @@ class BMI_Calc:
         elif self.bmi > 25 and self.bmi < 29.9:
             msg = 'A BMI between 25 and 29.9 tells you that you are slightly overweight and need to lose some weight.\nYou can consult your doctor to lose weight.'
             self.database_msg = 'slightly overweight'
-        elif self.bmi < 30:
+        elif self.bmi > 30:
             msg = "A BMI above 30 warns you that you are overweight. If you don't lose weight, your health will definitely be at risk. Be sure to talk to your doctor or nutritionist and start dieting."
             self.database_msg = 'overweight'
         return msg
@@ -52,7 +52,7 @@ class BMI_Calc:
             """
             INSERT INTO bmi VALUES (:name , :lname , :weight , :height , :BMI , :status)
             """, {'name': self.name, 'lname': self.lname, 'weight': self.weight,
-                  'height': self.height, 'BMI': self.bmi, 'status': self.datebace_msg}
+                  'height': self.height, 'BMI': self.bmi, 'status': self.database_msg}
         )
 
         self.conn.commit()
@@ -60,7 +60,7 @@ class BMI_Calc:
 
         print("Values inserted to data bace!")
 
-    def Show_data_base(self, last_name=None):
+    def Show_date_base(self, last_name=None):
 
         # if last namn has value
         self.conn = sqlite3.connect("bmi.db")
@@ -70,11 +70,11 @@ class BMI_Calc:
 
             self.cursor.execute(
                 """SELECT * FROM bmi WHERE lname = :lname""", {'lname': last_name})
-            return tabulate(self.cursor.fetchall())
+            return tabulate.tabulate(self.cursor.fetchall())
 
         elif last_name == None:
             self.cursor.execute("""SELECT * FROM bmi""")
-            return tabulate(self.cursor.fetchall())
+            return tabulate.tabulate(self.cursor.fetchall())
 
     def Delete_DataBase(self , last_name = None) :
             "Delete Data Base if last name --> None : Delete all database else : delete the lastname's info from data bace"
@@ -95,7 +95,7 @@ class BMI_Calc:
     def quit_script(self) :
         "Press ctrl + z in terminal to go out of cmd"
         system('^Z')
-
+  
     
     
 def run_required_methods() :
@@ -122,4 +122,4 @@ def run_required_methods() :
         print('\n', user1.Status_bmi(), end='\n')
         user1.insert_database()
 
-run_required_methods()
+# run_required_methods()
